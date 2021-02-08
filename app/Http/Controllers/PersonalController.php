@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Personal;
+use App\Http\Requests\PersonalRequest;
 
 class PersonalController extends Controller
 {
@@ -13,7 +14,7 @@ class PersonalController extends Controller
         return response()->json(Personal::all(), 200);
     }
 
-    public function store(Request $request)
+    public function store(PersonalRequest $request)
     {
         Personal::create($request->all());
         return response()->json([
@@ -25,7 +26,7 @@ class PersonalController extends Controller
     {
         return response()->json($personal, 200);
     }
-    public function update(Request $request, Personal $personal)
+    public function update(PersonalRequest $request, Personal $personal)
     {
         $personal->update($request->all());
         return response()->json([

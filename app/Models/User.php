@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany(Role::class)->withTimesTamps();
     }
+
+    public function findRole($slug){
+        return in_array($slug, $this->roles->pluck('slug')->toArray());
+    }
 }

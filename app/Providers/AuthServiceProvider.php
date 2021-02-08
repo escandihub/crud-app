@@ -25,6 +25,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+         Gate::define('hasRole', function(User $user, $slug) {
+            return $user->findRole($slug)
+            ? Response::allow()
+            : Response::deny('Esta vista no le es permitida');
+        });
+
         //
     }
 }

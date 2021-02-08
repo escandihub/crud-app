@@ -25,8 +25,7 @@ class PersonalRequest extends FormRequest
 	{
 		return [
 			"nombre" => "required",
-			"edad" => "required",
-			"direccion" => "required",
+			"descripcion" => "required",
 			"activo" => "required",
 		];
 	}

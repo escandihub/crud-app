@@ -17,6 +17,11 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('descripcion');
+            $table
+				->foreignId("user_id")
+				->references("id")
+				->on("users")
+				->onDelete("cascade");
             $table->boolean('activo');
             $table->timestamps();
         });

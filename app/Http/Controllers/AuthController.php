@@ -25,7 +25,10 @@ class AuthController extends Controller
 			]);
 		}
 
-		return $user->createToken($user->name)->plainTextToken;
+		return response()->json([
+			'token' => $user->createToken($user->name)->plainTextToken,
+			'user' => $user
+		], 200);
 	}
 
 	public function logout(Request $request)

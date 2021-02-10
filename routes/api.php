@@ -27,3 +27,11 @@ Route::group(["middleware" => "auth:sanctum"], function () {
 	Route::post("logout", [AuthController::class, "logout"]);
 	Route::apiResource("personal", PersonalController::class);
 });
+
+/**
+ * test to check out the pushnotification 
+ */ 
+Route::get('test', function () {
+    event(new App\Events\StatusLiked('Someone'));
+    return "Event has been sent!";
+});

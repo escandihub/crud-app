@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Gate;
 use App\Models\Product;
 use App\Policies\ProductPolicy;
 
+use Illuminate\Auth\Access\Response;
+use App\Models\User;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**

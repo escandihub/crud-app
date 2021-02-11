@@ -16,9 +16,10 @@ class LoginProvidersController extends Controller
 		if (!is_null($validated)) {
 			return $validated;
 		}
-		return Socialite::driver($provider)
+		return [
+			'url' => Socialite::driver($provider)
 			->stateless()
-			->redirect();
+			->redirect()->getTargetUrl()];
 	}
 
 	public function handleProviderCallback($provider)
@@ -58,6 +59,10 @@ class LoginProvidersController extends Controller
 		);
 
 		$token = $userCreated->createToken("token-prov")->plainTextToken;
+		
+		return view('Oauth.callback', [
+			"token" => $token
+		]);
 		return response()->json(
 			[
 				"token" => $token,

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
+use GuzzleHttp\Exception\ClientException;
 
 class LoginProvidersController extends Controller
 {
@@ -21,15 +23,12 @@ class LoginProvidersController extends Controller
 
 	public function handleProviderCallback($provider)
 	{
-        \Log::info('manejandro autentificacion');;
 		$validated = $this->validateProvider($provider);
 		if (!is_null($validated)) {
 			return $validated;
 		}
 		try {
-			$user = Socialite::driver($provider)
-				->stateless()
-				->user();
+			$user = Socialite::driver($provider)->stateless()->user();
 		} catch (ClientException $exception) {
 			return response()->json(
 				[
@@ -38,7 +37,7 @@ class LoginProvidersController extends Controller
 				422
 			);
 		}
-		$userCreated = User::findOrCreate(
+		$userCreated = User::firstOrCreate(
 			[
 				"email" => $user->getEmail(),
 			],
@@ -70,10 +69,10 @@ class LoginProvidersController extends Controller
 
 	public function validateProvider($provider)
 	{
-		if (!in_array($provider, ["facebook"])) {
+		if (!in_array($provider, ["facebook", "github"])) {
 			return response()->json(
 				[
-					"error" => "Por favor, registrese usando facebook",
+					"error" => "Por favor, registrese usando facebook, github",
 				],
 				200
 			);

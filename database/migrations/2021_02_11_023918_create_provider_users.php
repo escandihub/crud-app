@@ -16,10 +16,10 @@ class CreateProviderUsers extends Migration
         Schema::create('provider_users', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id")->references("id")->on("users")->onDelete("cascade");
-            $stable->string('provider');
-            $stable->string('provider_id');
-            $stable->string('users_id');
-            $stable->string('avatar')->nullable;
+            $table->string('provider');
+            $table->string('provider_id');
+            $table->string('users_id');
+            $table->string('avatar')->nullable;
             $table->timestamps();
         });
     }

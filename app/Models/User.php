@@ -50,4 +50,9 @@ class User extends Authenticatable
     public function findRole($slug){
         return in_array($slug, $this->roles->pluck('slug')->toArray());
     }
+
+    public function providers()
+    {
+        return $this->hasMany(Provider::class, 'user_id', 'id');
+    }
 }

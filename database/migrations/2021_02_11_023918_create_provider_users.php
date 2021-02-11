@@ -13,12 +13,12 @@ class CreateProviderUsers extends Migration
      */
     public function up()
     {
-        Schema::create('provider_users', function (Blueprint $table) {
+        Schema::create('providers', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id")->references("id")->on("users")->onDelete("cascade");
             $table->string('provider');
             $table->string('provider_id');
-            $table->string('users_id');
+            // $table->string('user_id');
             $table->string('avatar')->nullable;
             $table->timestamps();
         });

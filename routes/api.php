@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LoginProvidersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,7 @@ Route::get('test', function () {
     event(new App\Events\StatusLiked('Someone'));
     return "Event has been sent!";
 });
+
+//login 3er party
+Route::get("login/{provider}", [LoginProvidersController::class, "redirectToProvider"]);
+Route::get("login/{provider}/callback", [LoginProvidersController::class, "handleProviderCallback"]);

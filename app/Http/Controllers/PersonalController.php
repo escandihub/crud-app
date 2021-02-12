@@ -11,7 +11,7 @@ class PersonalController extends Controller
 {
 	public function index(Type $var = null)
 	{
-		return response()->json(Product::all(), 200);
+		return response()->json(Product::paginate(12), 200);
 	}
 
 	public function store(PersonalRequest $request)

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginProvidersController;
+use App\Http\Controllers\SendWebhookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,6 @@ Route::get('test', function () {
 //login 3er party
 Route::get("login/{provider}", [LoginProvidersController::class, "redirectToProvider"]);
 Route::get("login/{provider}/callback", [LoginProvidersController::class, "handleProviderCallback"]);
+
+// route to invoque the webhook
+Route::get('send-webhook', [SendWebhookController::class, 'send'])->name('send-webhook');

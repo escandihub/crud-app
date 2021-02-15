@@ -49,6 +49,9 @@ class RouteServiceProvider extends ServiceProvider
                 
             Route::namespace($this->namespace)
             ->group(base_path('routes/webhook.php'));
+
+            Route::namespace($this->namespace)
+            ->group(base_path('routes/pays.php'));
         });
     }
 

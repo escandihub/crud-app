@@ -6,4 +6,5 @@ use App\Http\Controllers\GeneratePayController;
 
 Route::prefix("pays")->group(function () {
 	Route::any("link-generator", [GeneratePayController::class, "basicPay"]);
+	Route::get("cargos", [GeneratePayController::class, "getCharges"]);
 });

@@ -16,6 +16,7 @@
         "laravel/sanctum": "^2.9",
         "laravel/socialite": "^5.1",
         "laravel/tinker": "^2.5",
+        "openpay/sdk": "^2.1",
         "pusher/pusher-php-server": "^4.1",
         "socialiteproviders/facebook": "^4.1",
         "socialiteproviders/github": "^4.1"

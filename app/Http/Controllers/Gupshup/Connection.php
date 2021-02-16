@@ -17,14 +17,8 @@ class Connection extends Controller
 	public function authentication()
 	{
 		return $this->api = Http::withHeaders($this->headers())
-			->asForm()
-			->post($this->endpoint, [
-				"channel" => "whatsapp",
-				"source" => "917834811114",
-				"destination" => "5219612954393",
-				"message" => "hola",
-				"src.name" => env("BOT_NAME"),
-			]);
+			->asForm() //x-www-form-urlencoded
+			->post($this->endpoint, $this->form());
 	}
 
 	private function headers(): array
@@ -46,7 +40,7 @@ class Connection extends Controller
 		return [
 			"channel" => "whatsapp",
 			"source" => "917834811114",
-			"destination" => "19612954393",
+			"destination" => "19613237188",
 			"message" => "hola",
 			"src.name" => env("BOT_NAME"),
 		];

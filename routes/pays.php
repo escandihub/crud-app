@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneratePayController;
 use App\Http\Controllers\Openpay\Customer;
 use App\Http\Controllers\Openpay\BankAccountController;
+use App\Http\Controllers\Openpay\PayoutController;
 
 Route::prefix("pays")->group(function () {
 	Route::any("link-generator", [GeneratePayController::class, "basicPay"]);
@@ -16,4 +17,5 @@ Route::prefix("pays")->group(function () {
 	Route::get("cuenta-cliente", [Customer::class, "customerAccount"]);
 	//account administration
 	Route::get("card", [BankAccountController::class, "createCard"]);
+	Route::get("redirect", [PayoutController::class, "redirec"]);
 });

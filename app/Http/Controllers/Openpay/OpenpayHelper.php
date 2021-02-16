@@ -7,13 +7,13 @@ use Openpay;
 
 class OpenpayHelper extends Controller
 {
-	public $openpay;
+	public static $openPay;
 	public function __construct()
 	{
 		/**
 		 *  CLIENT ID, PRIVATE KEY , COUNTRY CODE
 		 */
-		$this->openPay = Openpay::getInstance(
+		self::$openPay = Openpay::getInstance(
 			env("OPENPAY_MERCHANT_ID"),
 			env("OPENPAY_PRIVATE_KEY"),
 			env("OPENPAY_COUNTRY_CODE")
@@ -22,8 +22,13 @@ class OpenpayHelper extends Controller
 		Openpay::setProductionMode(false);
 	}
 
-	public function getInstance()
+	/**
+	 * instance of Openpay
+	 *
+	 * @return Openpay Object
+	 */
+	public static function getInstance()
 	{
-		return $this->openPay;
+		return self::$openPay;
 	}
 }

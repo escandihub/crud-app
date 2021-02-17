@@ -20,6 +20,10 @@ class Connection extends Controller
 			->asForm() //x-www-form-urlencoded
 			->post($this->endpoint, $this->form());
 	}
+	public function webhook()
+	{
+		Http::withHeaders($this->headers())->post($this->endpoint);
+	}
 
 	private function headers(): array
 	{

@@ -16,7 +16,7 @@ class PaymanetFactory
 		}
 	}
 	
-//better option
+//better option to use when call a function 
 	private function mapToClass($type)
 	{
 		$classes = [

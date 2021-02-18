@@ -7,6 +7,7 @@ use App\Http\Controllers\Openpay\Customer;
 use App\Http\Controllers\Openpay\BankAccountController;
 use App\Http\Controllers\Openpay\PayoutController;
 use App\Http\Controllers\Openpay\ChargeTokenController;
+use App\Http\Controllers\Openpay\Payment\PayController;
 
 Route::group(['prefix' => 'pays'], function () {
 	Route::any("link-generator", [GeneratePayController::class, "basicPay"]);
@@ -22,4 +23,6 @@ Route::group(['prefix' => 'pays'], function () {
 	Route::get("redirect", [PayoutController::class, "redirec"]);
 	//cargo con formulario personalizado
 	Route::post("cargo-token", [ChargeTokenController::class, "store"])->middleware();
+	Route::post("paying", [PayController::class, "store"]);
+
 });

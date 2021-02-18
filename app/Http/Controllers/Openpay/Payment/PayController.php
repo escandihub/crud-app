@@ -12,7 +12,7 @@ class PayController extends Controller
 	public function store(Request $request)
 	{
 		$paymanet = new PaymanetFactory();
-		$paymanet->initializablePayment($request->type);
-		$paymanet->pay();
+		$payOption = $paymanet->initializablePayment($request->type);
+		$payOption->pay();
 	}
 }

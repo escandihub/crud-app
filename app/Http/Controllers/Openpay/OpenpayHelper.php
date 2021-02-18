@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Openpay;
 
-use App\Http\Controllers\Controller;
 use Openpay;
 
-class OpenpayHelper extends Controller
+class OpenpayHelper
 {
 	public static $openPay;
 	public function __construct()

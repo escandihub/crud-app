@@ -20,10 +20,11 @@ class PaymanetFactory
 	private function mapToClass($type)
 	{
 		$classes = [
-			'card' => 'CardPayment',
-			'store' => 'StorePayment',
+			'CardPayment' => 'card',
+			'StorePayment' => 'store',
 		];
-		$callback = array_search($classes, $type);
+		
+		$callback = array_search($type, $classes);
 		return call_user_func($callback);
 	}
 }

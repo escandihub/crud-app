@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Http;
 
 class Connection extends Controller
 {
+	//test val temp
+
+	private $number;
+	private $message;
+	//adove is jut for test
 	private $api;
 	private $endpoint = "https://api.gupshup.io/sm/api/v1/msg";
 	public function __construct()
@@ -16,13 +21,9 @@ class Connection extends Controller
 
 	public function authentication()
 	{
-		return $this->api = Http::withHeaders($this->headers())
-			->asForm() //x-www-form-urlencoded
+		return Http::withHeaders($this->headers())
+			->asForm()
 			->post($this->endpoint, $this->form());
-	}
-	public function webhook()
-	{
-		Http::withHeaders($this->headers())->post($this->endpoint);
 	}
 
 	private function headers(): array
@@ -43,10 +44,16 @@ class Connection extends Controller
 	{
 		return [
 			"channel" => "whatsapp",
-			"source" => "917834811114",
-			"destination" => "19613237188",
-			"message" => "hola",
+			"source" => env('BOT_NUMBER'),
+			"destination" => "52" . $this->number ,
+			"message" => "¿te gusta?",
 			"src.name" => env("BOT_NAME"),
 		];
+	}
+	public function replyTo($destination, $message)
+	{
+		$this->number = $destination;
+		$this->message = $message;
+		$this->authentication();
 	}
 }

@@ -20,11 +20,6 @@ class GeneratePayController extends Controller
 	use TypesPay;
 
 	public $openPay;
-	public function __construct(Type $var = null)
-	{
-		$OpenpayInstance = new OpenpayHelper();
-		$this->openPay = $OpenpayInstance::getInstance();
-	}
 	public function basicPay()
 	{
 		$empleado = [
@@ -36,7 +31,7 @@ class GeneratePayController extends Controller
 
 		$solicitudCargo = $this->typePay("alipay");
 		//cliente
-		$customer = $this->openPay->customers->get("arapqpl8qf4qsqq2eyda");
+		$customer = OpenpayHelper::getInstance()->customers->get("arapqpl8qf4qsqq2eyda");
 		$customer->charges->create($solicitudCargo);
 		//comercio
 		// $cargo = $this->openPay->charges->create($solicitudGargo);

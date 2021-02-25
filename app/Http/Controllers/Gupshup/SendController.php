@@ -13,6 +13,9 @@ class SendController extends Controller
     {
         // $conec = new Connection;
       // dd($conec->authentication());
+      // dd(BotConnection::requestOptIn("5219612954393"));
+      // \Log::info(BotConnection::getUsers());
+      // dd(BotConnection::sendTo("5219613237188"));
       dd(BotConnection::sendTo("19612954393"));
       \Log::alert('todo bien');
     }

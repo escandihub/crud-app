@@ -18,12 +18,35 @@ final class BotConnection
 			->post(self::API, [
 				"channel" => "whatsapp",
 				"source" => env("BOT_NUMBER"),
-				"destination" => "52" . $number,
+				"destination" => $number,
 				"message" => "¿te gusta?",
 				"src.name" => env("BOT_NAME"),
 			]);
 	}
+	public static function sendToReusable($number, $message)
+	{
+		return Http::withHeaders([
+			"apikey" => env("GUPSHUP_API_KEY"),
+			// "Content-Type" => "application/x-www-form-urlencoded"
+		])
+			->asForm()
+			->post(self::API, [
+				"channel" => "whatsapp",
+				"source" => env("BOT_NUMBER"),
+				"destination" => $number,
+				"src.name" => env("BOT_NAME"),
+				"message" => json_encode($message, true),
+			]);
+	}
 
+
+/**
+ * esto permite activar las notificaciones al 
+ * usuario, ¿como se le permitiria desactivarlo?
+ *
+ * @param integer $number
+ * @return Illuminate\Http\Client\Response
+ */
 	public static function requestOptIn($number)
 	{
 		return Http::withHeaders([

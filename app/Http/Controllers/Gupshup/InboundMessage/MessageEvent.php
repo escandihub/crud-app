@@ -9,4 +9,9 @@ class MessageEvent implements iMessages
 		\Log::info('salvar si el mesanje se guardo');
 		echo 'conocer el estado del mensaje, es visto o no';
 	}
+
+	public function saveEvent($event)
+	{
+		//could be enqueued|read|
+	}
 }

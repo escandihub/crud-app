@@ -10,7 +10,7 @@ class Connection extends Controller
 {
 	//test val temp
 
-	private $number;
+	private $number = "19612954393";
 	private $message;
 	//adove is jut for test
 	private $api;
@@ -30,7 +30,6 @@ class Connection extends Controller
 	{
 		return [
 			"Cache-Control" => "no-cache",
-			// "Content-Type" => "application/x-www-form-urlencoded",
 			"apikey" => env("GUPSHUP_API_KEY"),
 		];
 	}
@@ -45,7 +44,7 @@ class Connection extends Controller
 		return [
 			"channel" => "whatsapp",
 			"source" => env('BOT_NUMBER'),
-			"destination" => "52" . $this->number ,
+			"destination" => "5219612954393",
 			"message" => "¿te gusta?",
 			"src.name" => env("BOT_NAME"),
 		];

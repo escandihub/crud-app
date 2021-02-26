@@ -30,4 +30,8 @@ class ReplyToTypos
 	{
 		$this->reply->send_stiker();
 	}
+	public function tem()
+	{
+		$this->reply->send_template_media();
+	}
 }

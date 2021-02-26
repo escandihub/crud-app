@@ -54,4 +54,13 @@ class SendTypes {
 		\Log::alert($stiker);
 		return $stiker;
 	}
+
+	public function send_template_media()
+	{
+		BotConnection::sendToReusable('5219612954393', [
+			'isHSM' => true,
+			'type' => 'text',
+			'text' => "Hi maria, Please find the attached bill."
+		]);
+	}
 }

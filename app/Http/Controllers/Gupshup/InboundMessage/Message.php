@@ -10,11 +10,12 @@ class Message implements iMessages
 		// \Log::alert($message);
 		$msg = $message["payload"]["payload"]["text"];
 
-		if (in_array($msg, ["imagen", "video", "audio"])) {
+		if (in_array($msg, ["imagen", "video", "audio", "tem"])) {
 			$typos = new ReplyToTypos();
 			call_user_func([$typos, $msg]);
+		}else{
+			echo "no contamos con ese comando";	
 		}
-		echo "no contamos con ese comando";
 	}
 
 	public function expectedType(string $type): bool

@@ -19,7 +19,7 @@ final class BotConnection
 				"channel" => "whatsapp",
 				"source" => env("BOT_NUMBER"),
 				"destination" => $number,
-				"message" => "¿te gusta?",
+				"message" => "Soy un bot 🤖, para ofrecer lolis en linea, se encuentra interesado?",
 				"src.name" => env("BOT_NAME"),
 			]);
 	}
